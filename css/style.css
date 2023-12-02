@@ -1,0 +1,241 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html,body{
+    font-family: 'Hind', sans-serif;
+    /*? rem: dựa vào font-size của thẻ html=>hỗ trợ bảo trì trang web */
+    /* 1 rem bằng 18px */
+    /*! font-size, spacing(padding,margin) */
+    /* nếu không khai báo font-size, mặc định 1rem=16px */
+    font-size: 18px;
+}
+/* header */
+header{
+    /* z-index: auto; của thẻ có posittion tạo sau sẽ> tạo trước đó */
+
+    /* z-index có số > z-index: auto
+    z-index có số lớn đè lên > số nhỏ */
+    z-index: 10;
+    width: 100%;
+    position: absolute;
+    top: 0%;
+    left: 0%;
+   
+}
+
+header .navbar-brand {
+     /* 2rem = 36px */
+     font-size: 2rem;
+    color: #35a22c;
+    
+}
+header .navbar-brand i{
+    /* 2rem = 36px */
+   font-size: 2.6rem;
+   color: #35a22c;
+   
+}
+
+#portfolioNav .nav-link {
+    font-size: 1rem;
+    padding: 0 0.833rem;
+    /* ! trước hover */
+    color: white;
+
+    transition: .5s;
+}
+
+#portfolioNav .nav-link::after {
+    content: "";
+
+    display: block;
+    /* trước hover */
+    width: 0;
+    height: 5px;
+
+    background-color: #35a22c;
+
+    transition: .5s;
+}
+
+/* ! sau hover */
+#portfolioNav .nav-item:hover .nav-link::after {
+    width: 100%;
+}
+
+#portfolioNav .nav-item:hover .nav-link {
+    color: #35a22c;
+}
+
+/* Thẻ li có class active thì after của nav-link luôn xuất hiện */
+
+#portfolioNav .active .nav-link::after {
+    width: 100%;
+}
+
+#portfolioNav .active .nav-link {
+    color: #35a22c;
+}
+
+/* li.active : định nghĩa selector của 1 thẻ */
+/* #portfolioNav li.active .nav-link::after {
+    width: 100%;
+} */
+
+
+/*! Nằm dưới cùng của vùng nội dung chính header
++ dễ đọc code
++ bị dài code 
+Desktop first: max-width (màn hình lớn trước -> nhỏ sau)
+Mobile first: min-width (màn hình nhỏ trước -> lớn sau)*/
+
+
+
+@media screen and (max-width:992px) {
+
+    /* kích thước tối đa vùng màn hình <= 992px*/
+    /* 1 + 10 + 10 => 21 */
+    header .navbar .navbar-toggler {
+        background-color: #35a22c;
+    }
+
+    #portfolioNav {
+        background-color: white;
+       
+    }
+
+    #portfolioNav .nav-link {
+        color: #35a22c;
+    }
+
+    #portfolioNav .nav-item:hover {
+        background-color: #35a22c;
+      
+    }
+
+    #portfolioNav .nav-link::after {
+        /* opacity: 0; thẻ trong suốt nhưng vẫn chiếm diện tích trên UI (dùng được với transition)*/
+        /* ẩn hoàn toàn thẻ (cả diện tích thẻ) => không dùng với hiệu ứng ẩn hiện 
+        không dùng được với transition */
+        display: none;
+    }
+    #portfolioNav .nav-item:hover .nav-link{
+        color: #fff;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    header .navbar .navbar-toggler {
+        background-color: hotpink;
+    }
+}
+
+
+/* CAROUSEL */
+#carouselPortMain .carousel-item >  img {
+    height: 100vh;
+    object-fit: cover;
+    
+}
+#carouselPortMain .carousel-caption img{
+    width: 140px;
+    border-radius: 50%;
+   
+}
+/* chỉnh đường gach indicators thì chuyển chữ nhật => hình vuông => tròn */
+#carouselPortMain .carousel-indicators li{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+/*! căn giữa với position absolute */
+#carouselPortMain .carousel-caption{
+    top: 50%;
+    left: 50%;
+transform: translate(-50%,-50%);
+}
+/* Service */
+.service{
+    width: 100%;
+    color: white;
+    background-image: url(/img/3.jpg);
+    background-size: cover;
+   
+    background-attachment: fixed;
+   
+  
+}
+
+.service .overlay{
+    padding: 90px 0px;
+    background: rgba(7,10,12,.72);
+}
+.service__item{
+    text-align: center;
+    padding: 40px 30px;
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    transition: all 0.5s;
+
+}
+.service__item i{
+    color: #35a22c;
+    padding-bottom: 30px;
+    font-size: 2.5rem;
+}
+.service__item h4{
+    font-weight: 600;
+    padding-bottom: 30px;
+}
+.service__item:hover{
+    background-color: black;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Projects */
+.projects{
+    padding: 100px 0;
+}
+.projects__title{
+    text-align: center;
+}
+#all .card:hover{
+    border: solid 1px green;
+}
+#all .card-body{
+    transition: all 0.5s;
+}
+#all .card:hover .card-body{
+color: #35a22c;
+}
+/* AWARDS */
+.award{
+    padding: 70px 0px;
+    background-image: url(/img/memphis_3.png);
+    background-position: left bottom;
+    background-position: 50%;
+    background-repeat: no-repeat;
+}
+.awards__left{
+
+    background: rgba(255,255,255,.25);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 30px 0 rgba(0,0,0,.3);
+    padding: 45px;
+}
